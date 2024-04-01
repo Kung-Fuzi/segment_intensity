@@ -26,7 +26,19 @@ Arguments:
 python split_tif.py -i <input/path/to/file.tif> -o <output/path/to/directory>
 ```
 
-Segment and quantify cell edge intensities from IHC data.
+Segment and quantify cell edge intensities from IHC data (single).
+
+Arguments:
+* -i, --input : Path to input IHC TIF file.
+* -s, --spot : Gaussian sigma for controlling spot detection, default 6.
+* -o, --outline : Gaussian sigma for controlling outline detection, default 3.
+* -t, --threshold : Threshold for background cutoff, default 0.01.
+
+```
+python segment_intensity_single.py -i <input/path/to/file.tif>
+```
+
+Segment and quantify cell edge intensities from IHC data (batch).
 
 Arguments:
 * -i, --input : Directory containing input IHC TIF files.
