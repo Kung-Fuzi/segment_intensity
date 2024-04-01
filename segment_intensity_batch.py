@@ -148,42 +148,42 @@ def main():
         writer = csv.writer(results)
         writer.writerow(['Image Name', 'Average Edge Intensity'])
     
-    # Loop over files in input directory
-    for input_fn in os.listdir(input_dir):
-        
-        logging.info(f'Processing image: {input_fn}')
-        
-        # Validate input path
-        if not input_fn.lower().endswith(('.tif', '.tiff')):
-            logging.error('The input file does not have a .tif or .tiff extension. Skipping.')
-            continue
-        
-        input_path = os.path.join(input_dir, input_fn)
-        
-        # Load image from input path
-        image = imread(input_path)
-        
-        # Segment image
-        logging.info('Segmenting image...')
-        filtered_labels = cell_segmentation(
-            image, 
-            spot_sigma=args.spot, 
-            outline_sigma=args.outline, 
-            threshold=args.threshold
-            )
-        
-        # Quantify edge intensity
-        logging.info('Analyzing image...')
-        edge_intensity = quantify_edge_intensity(
-            image, 
-            filtered_labels
-            )
-        
-        # Write results to CSV
-        writer.writerow([input_fn, edge_intensity])
-        
-        logging.info(f'Average edge intensity: {edge_intensity}')
-        logging.info('Complete!\n')
+        # Loop over files in input directory
+        for input_fn in os.listdir(input_dir):
+            
+            logging.info(f'Processing image: {input_fn}')
+            
+            # Validate input path
+            if not input_fn.lower().endswith(('.tif', '.tiff')):
+                logging.error('The input file does not have a .tif or .tiff extension. Skipping.')
+                continue
+            
+            input_path = os.path.join(input_dir, input_fn)
+            
+            # Load image from input path
+            image = imread(input_path)
+            
+            # Segment image
+            logging.info('Segmenting image...')
+            filtered_labels = cell_segmentation(
+                image, 
+                spot_sigma=args.spot, 
+                outline_sigma=args.outline, 
+                threshold=args.threshold
+                )
+            
+            # Quantify edge intensity
+            logging.info('Analyzing image...')
+            edge_intensity = quantify_edge_intensity(
+                image, 
+                filtered_labels
+                )
+            
+            # Write results to CSV
+            writer.writerow([input_fn, edge_intensity])
+            
+            logging.info(f'Average edge intensity: {edge_intensity}')
+            logging.info('Complete!\n')
 
 if __name__ == '__main__':
     main()
