@@ -12,24 +12,28 @@ python -m pip install "napari[all]"
 
 Pip install EpiTools and additional dependencies:
 ```
-python -m pip install epitools, pillow
+python -m pip install epitools pillow
 ```
 
-## Example
-*split_tif.py*
-
-Split a multi-frame TIF file into individual TIF images
+## Usage
+Split a multi-frame TIF file into individual TIF images:
 
 Arguments:
 * -i, --input : Path to the input multi-frame TIF file
 * -o, --output : Directory where the split TIF images will be saved
 
-*segment_intensity_batch.py*
+```
+python split_tif.py -i <input/path/to/file.tif> -o <output/path/to/directory>
+```
 
 Segment and quantify cell edge intensities from IHC data.
 
 Arguments:
 * -i, --input : Directory containing input IHC TIF files.
-* -s, --spot : Gaussian sigma for controlling spot detection.
-* -o, --outline : Gaussian sigma for controlling outline detection.
-* -t, --threshold : Threshold for background cutoff.
+* -s, --spot : Gaussian sigma for controlling spot detection, default 6.
+* -o, --outline : Gaussian sigma for controlling outline detection, default 3.
+* -t, --threshold : Threshold for background cutoff, default 0.01.
+
+```
+python segment_intensity_batch.py -i <input/path/to/directory>
+```
