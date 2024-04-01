@@ -141,10 +141,11 @@ def main():
     if not os.path.isdir(input_dir):
         logging.error('The input directory does not exist.')
         return
+    input_files = [fn for fn in os.listdir(input_dir)]
     
     # Initiate CSV writer
     results_path = os.path.join(input_dir, 'results.csv')
-    with open(results_path, 'w') as results:
+    with open(results_path, 'w', newline='') as results:
         writer = csv.writer(results)
         writer.writerow(['Image Name', 'Average Edge Intensity'])
     
