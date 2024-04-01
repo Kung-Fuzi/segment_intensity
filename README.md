@@ -10,20 +10,24 @@ conda activate segment_intensity-env
 python -m pip install "napari[all]"
 ```
 
-Pip install EpiTools and additional dependencies
+Pip install EpiTools and additional dependencies:
 ```
 python -m pip install epitools, pillow
 ```
 
 ## Example
 *split_tif.py*
+
 Split a multi-frame TIF file into individual TIF images
+
 Arguments:
 * -i, --input : Path to the input multi-frame TIF file
 * -o, --output : Directory where the split TIF images will be saved
 
 *segment_intensity_batch.py*
+
 Segment and quantify cell edge intensities from IHC data.
+
 Arguments:
 * -i, --input : Directory containing input IHC TIF files.
 * -s, --spot : Gaussian sigma for controlling spot detection.
